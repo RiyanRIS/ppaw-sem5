@@ -31,11 +31,19 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->post('/getJson/(:any)', 'Home::getJson/$1');
+
 $routes->get('/ikan', 'Ikan::index');
 $routes->post('/aksi-ikan', 'Ikan::aksi');
-$routes->post('/getJson/(:any)', 'Home::getJson/$1');
 $routes->get('/hapus-ikan/(:any)', 'Ikan::hapus/$1');
 
+$routes->get('/pembeli', 'Pembeli::index');
+$routes->post('/aksi-pembeli', 'Pembeli::aksi');
+$routes->get('/hapus-pembeli/(:any)', 'Pembeli::hapus/$1');
+
+$routes->get('/admin', 'Admin::index');
+$routes->post('/aksi-admin', 'Admin::aksi');
+$routes->get('/hapus-admin/(:any)', 'Admin::hapus/$1');
 
 /**
  * --------------------------------------------------------------------
