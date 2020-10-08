@@ -8,7 +8,6 @@
   <title>PANEL ATUR PEMESANAN</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -121,19 +120,18 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     
     <script>
+        var hrg = 0;
+        var jumlah = 1;
         $(document).ready(function(){
             $(".table").dataTable();
-            // $('#namapemesan').select2();
-            // $('#namaikan').select2();
             $('[data-toggle="tooltip"]').tooltip()
             $("#6342").click(function(){ // KLIK TAMBAH
                 $("#9187").html("TAMBAH DATA PEMESANAN");
                 $("#2761").val("tambah");
-                $("#namapemesan").focus();
+                $("#namapembeli").focus();
             });
             $('#data').on('click','.8867',function(){ // KLIK UBAH
                 var id=$(this).attr('data');
@@ -145,12 +143,13 @@
                     success: function(result){
                         $("#9187").html("UBAH DATA PEMESANAN");
                         $("#2761").val("ubah");
-                        $("#namapemesan").focus();
-                        $('#namapemesan').val(result.namapemesan);
+                        $("#namapembeli").focus();
+                        $('#namapembeli').val(result.pemesan);
                         $("#1782").val(result.id);
-                        $("#namaikan").val(result.namaikan);
+                        $("#namaikan").val(result.ikan);
                         $("#jumlah").val(result.jumlah);
                         $("#total").val(result.total);
+                        harga(); update();
                     }
                 });
             });
@@ -158,9 +157,7 @@
             
             $('.toast').toast('show');
         });
-
-        var hrg = 0;
-        var jumlah = 1;
+        
         function harga(){
             var id = $("#namaikan").val();
             $.ajax({
