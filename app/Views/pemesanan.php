@@ -46,13 +46,24 @@
                                 <td><?= $key['namaikan'];?></td>
                                 <td><?= $key['jumlah'];?></td>
                                 <td><?= $key['total'];?></td>
-                                <td><?php if(empty($key['bayar'])){ ?>
-                                        <button data="<?= $key['id'] ?>" class="btn btn-primary 1167" data-toggle="tooltip" data-placement="top" title="Klik untuk mengupdate data">Belum Lunas</button>
-                                    <?php }elseif(empty($key['sampai'])){ ?>
-                                        <button data="<?= $key['id'] ?>" class="btn btn-primary 2267" data-toggle="tooltip" data-placement="top" title="Klik untuk mengupdate data">Sedang Dikirim</button>
-                                    <?php }else{ ?>
-                                        <button data="<?= $key['id'] ?>" class="btn btn-primary 3367">Selesai</button>
-                                    <?php } ?></td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <?php if(empty($key['bayar'])){
+                                            echo "Belum Lunas";
+                                        }elseif(empty($key['sampai'])){
+                                            echo "Sedang Dikirim";
+                                        }else{
+                                            echo "Sampai";
+                                        }
+                                        ?>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <a class="dropdown-item" href="<?= base_url("lunas-pemesanan/".$key['id']) ?>">Update Lunas</a>
+                                        <a class="dropdown-item" href="<?= base_url("selesai-pemesanan/".$key['id']) ?>">Update Sampai</a>
+                                        </div>
+                                    </div>
+                                </td>
                                 
                                 <td>
                                 <button data="<?= $key['id'] ?>" class="btn btn-warning 8867">ubah</button>||<a onclick="return confirm('Anda yakin akan menghapus data?')" href="<?= base_url("hapus-pemesanan/".$key['id']) ?>" class="btn btn-danger">hapus</a></td>

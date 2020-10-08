@@ -75,4 +75,24 @@ class Transaksi extends Controller
         return redirect()->to('/pemesanan');
     }
 
+    public function status($a,$b){
+        if($a == "lunas"){
+            $data = array(
+                'bayar'  => date("Y-m-d H:i:s"),
+            );
+            $status = $this->transaksiM->ubah($data,$b);
+        }elseif($a == "selesai"){
+            $data = array(
+                'sampai'  => date("Y-m-d H:i:s"),
+            );
+            $status = $this->transaksiM->ubah($data,$b);
+        }
+        if(!$status){
+            session()->setFlashdata('info', 'Gagal menyimpan data');
+        }else{
+            session()->setFlashdata('info', 'Berhasil mengubah data');
+        }
+        return redirect()->to('/pemesanan');
+    }
+
 }
