@@ -13,6 +13,9 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="<?= base_url("pemesanan") ?>">Pemesanan</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="<?= base_url("ikan") ?>">Ikan</a>
           </li>
           <li class="nav-item">

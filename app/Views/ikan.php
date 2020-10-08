@@ -70,7 +70,7 @@
                     <label for="namaikan">Nama Ikan</label>
                     <input type="hidden" name="status" value="tambah" id="2761">
                     <input type="hidden" name="id" id="1782">
-                    <input type="text" class="form-control" id="namaikan" name="namaikan" placeholder="Masukkan Nama Ikan">
+                    <input type="text" class="form-control" required id="namaikan" name="namaikan" placeholder="Masukkan Nama Ikan">
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group">
                     <label for="harga">Harga</label>
-                    <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga">
+                    <input type="text" class="form-control" required id="harga" name="harga" placeholder="Masukkan Harga">
                 </div>
                 
                 <?= form_close() ?>

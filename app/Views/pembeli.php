@@ -68,19 +68,19 @@
                     <label for="namapembeli">Nama Pembeli</label>
                     <input type="hidden" name="status" value="tambah" id="2761">
                     <input type="hidden" name="id" id="1782">
-                    <input type="text" class="form-control" id="namapembeli" name="namapembeli" placeholder="Masukkan Nama Pembeli">
+                    <input type="text" class="form-control" required id="namapembeli" name="namapembeli" placeholder="Masukkan Nama Pembeli">
                 </div>
                 <div class="form-group">
                     <label for="alamat">Alamat</label>
-                    <textarea name="alamat" class="form-control" id="alamat" cols="30" rows="5" placeholder="Masukkan Alamat"></textarea>
+                    <textarea name="alamat" class="form-control" required id="alamat" cols="30" rows="5" placeholder="Masukkan Alamat"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="nohp">No Handphone</label>
-                    <input type="text" class="form-control" id="nohp" name="nohp" placeholder="Masukkan No Handphone">
+                    <input type="text" class="form-control" required id="nohp" name="nohp" placeholder="Masukkan No Handphone">
                 </div>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username">
+                    <input type="text" class="form-control" required id="username" name="username" placeholder="Masukkan Username">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>

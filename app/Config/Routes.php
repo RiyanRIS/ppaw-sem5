@@ -45,6 +45,10 @@ $routes->get('/admin', 'Admin::index');
 $routes->post('/aksi-admin', 'Admin::aksi');
 $routes->get('/hapus-admin/(:any)', 'Admin::hapus/$1');
 
+$routes->get('/pemesanan', 'Transaksi::index');
+$routes->post('/aksi-pemesanan', 'Transaksi::aksi');
+$routes->get('/hapus-pemesanan/(:any)', 'Transaksi::hapus/$1');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
