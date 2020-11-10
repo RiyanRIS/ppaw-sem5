@@ -4,6 +4,10 @@ use CodeIgniter\Model;
 class Pembeli_model extends Model
 {
     protected $table = 'pemesan';
+
+    public function getSql($sql){
+        return $this->db->query($sql)->getResultArray();
+    }
      
     public function getPembeli($id = false)
     {

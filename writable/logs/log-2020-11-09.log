@@ -1,0 +1,10 @@
+CRITICAL - 2020-11-09 20:39:57 --> Call to undefined function form_open()
+#0 /var/www/html/kumpulan-sistem/ppaw-sem5/system/View/View.php(246): include()
+#1 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Common.php(1119): CodeIgniter\View\View->render()
+#2 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Controllers/Auth.php(23): view()
+#3 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(924): App\Controllers\Auth->login()
+#4 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController()
+#5 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest()
+#6 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Commands/Server/rewrite.php(34): require_once('/var/www/html/k...')
+#8 {main}

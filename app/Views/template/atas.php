@@ -8,21 +8,24 @@
         <ul class="navbar-nav ml-auto">
           <!-- <li class="nav-item active"> -->
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>">Home
+            <a class="nav-link" href="<?= site_url() ?>">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url("pemesanan") ?>">Pemesanan</a>
+            <a class="nav-link" href="<?= site_url("pemesanan") ?>">Pemesanan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url("ikan") ?>">Ikan</a>
+            <a class="nav-link" href="<?= site_url("ikan") ?>">Ikan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url("pembeli") ?>">Pembeli</a>
+            <a class="nav-link" href="<?= site_url("pembeli") ?>">Pembeli</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url("admin") ?>">Admin</a>
+            <a class="nav-link" href="<?= site_url("admin") ?>">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= site_url("login") ?>">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>

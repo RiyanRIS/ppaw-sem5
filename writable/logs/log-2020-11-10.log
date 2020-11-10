@@ -1,0 +1,29 @@
+CRITICAL - 2020-11-10 09:56:58 --> Undefined property: App\Controllers\Auth::$users
+#0 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Controllers/Auth.php(28): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(924): App\Controllers\Auth->loginA()
+#2 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController()
+#3 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest()
+#4 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Commands/Server/rewrite.php(34): require_once('/var/www/html/k...')
+#6 {main}
+CRITICAL - 2020-11-10 09:57:13 --> Call to undefined method App\Models\Pembeli_model::getSql
+#0 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Controllers/Auth.php(28): CodeIgniter\Model->__call()
+#1 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(924): App\Controllers\Auth->loginA()
+#2 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController()
+#3 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest()
+#4 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Commands/Server/rewrite.php(34): require_once('/var/www/html/k...')
+#6 {main}
+CRITICAL - 2020-11-10 09:57:48 --> Array to string conversion
+#0 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Views/template/atas.php(41): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/html/kumpulan-sistem/ppaw-sem5/system/View/View.php(246): include('/var/www/html/k...')
+#2 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Common.php(1119): CodeIgniter\View\View->render()
+#3 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Views/index.php(14): view()
+#4 /var/www/html/kumpulan-sistem/ppaw-sem5/system/View/View.php(246): include('/var/www/html/k...')
+#5 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Common.php(1119): CodeIgniter\View\View->render()
+#6 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Controllers/Home.php(12): view()
+#7 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(924): App\Controllers\Home->index()
+#8 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController()
+#9 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest()
+#10 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#11 {main}

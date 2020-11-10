@@ -51,6 +51,12 @@ $routes->get('/hapus-pemesanan/(:any)', 'Transaksi::hapus/$1');
 $routes->get('/lunas-pemesanan/(:any)', 'Transaksi::status/lunas/$1');
 $routes->get('/selesai-pemesanan/(:any)', 'Transaksi::status/selesai/$1');
 
+$routes->get('/login', 'Auth::login');
+$routes->post('/login-aksi', 'Auth::loginA');
+$routes->get('/signup', 'Auth::signup');
+$routes->get('/logout', 'Auth::logout');
+
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
