@@ -27,7 +27,7 @@ class Admin extends Controller
                 'password'  => $pw,
             );
             $status = $this->adminM->simpan($data);
-            session()->setFlashdata('info', 'Berhasil menyimpan data');
+            session()->setFlashdata('info', [1, 'Berhasil menyimpan data']);
         }elseif($this->request->getPost('status')=="ubah"){
             $id = $this->request->getPost('id');
             if(empty($this->request->getPost('password'))){
@@ -45,15 +45,15 @@ class Admin extends Controller
                 );
                 $status = $this->adminM->ubah($data,$id);
             }
-            session()->setFlashdata('info', 'Berhasil mengubah data');
+            session()->setFlashdata('info', [1, 'Berhasil mengubah data']);
         }else{
-            session()->setFlashdata('info', 'Terjadi Kesalahan Data');
+            session()->setFlashdata('info', [2, 'Terjadi Kesalahan Data']);
             return redirect()->to('/admin');
             die();
         }
 
         if(!$status){
-            session()->setFlashdata('info', 'Gagal menyimpan data');
+            session()->setFlashdata('info', [2, 'Gagal menyimpan data']);
         }
         
         return redirect()->to('/admin');
@@ -63,9 +63,9 @@ class Admin extends Controller
     {
         $status = $this->adminM->hapus($id);
         if(!$status){
-            session()->setFlashdata('info', 'Gagal menyimpan data');
+            session()->setFlashdata('info', [2, 'Gagal menyimpan data']);
         }else{
-            session()->setFlashdata('info', 'Berhasil menghapus data');
+            session()->setFlashdata('info', [1, 'Berhasil menghapus data']);
         }
         return redirect()->to('/admin');
     }

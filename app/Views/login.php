@@ -1,81 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<title>Login Page</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+.my-form
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+.my-form .row
+{
+    margin-left: 0;
+    margin-right: 0;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/vendor/animate/animate.css">
+.login-form
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/vendor/css-hamburgers/hamburgers.min.css">
+.login-form .row
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+</style>
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/vendor/animsition/css/animsition.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/vendor/select2/select2.min.css">
-
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/vendor/daterangepicker/daterangepicker.css">
-
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/css/util.css">
-<link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v10/css/main.css">
-
+    <title>Login Page</title>
 </head>
 <body>
-<div class="limiter">
-<div class="container-login100">
-<div class="wrap-login100 p-t-50 p-b-90">
+<?= view('template/atas') ?>
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Sign in</div>
+                    <div class="card-body">
+                    <?= form_open("login-aksi") ?>
+                            <div class="form-group row">
+                                <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="username" class="form-control" name="username" required autofocus>
+                                </div>
+                            </div>
 
-<?= form_open("login-aksi",'class="login100-form validate-form flex-sb flex-w"') ?>
-<span class="login100-form-title p-b-51">
-Login
-</span>
-<div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-<input class="input100" type="text" name="username" placeholder="Username">
-<span class="focus-input100"></span>
-</div>
-<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-<input class="input100" type="password" name="password" placeholder="Password">
-<span class="focus-input100"></span>
-</div>
-<div class="flex-sb-m w-full p-t-3 p-b-24">
-<div class="contact100-form-checkbox">
-<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-<label class="label-checkbox100" for="ckb1">
-Remember me
-</label>
-</div>
-<div>
-<a href="#" class="txt1">
-Forgot?
-</a>
-</div>
-</div>
-<div class="container-login100-form-btn m-t-17">
-<button class="login100-form-btn">
-Login
-</button>
-</div>
-<?= form_close() ?>
-<div style="margin-top:20px;text-align:center;">
-<p>&copy;2020 <a href="#">asapin.com</a> </p>
-</div>
-</div>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <div class="col-md-6">
+                                    <input type="password" id="password" class="form-control" name="password" required>
+                                </div>
+                            </div>
 
-</div>
-</div>
-<div id="dropDownSelect1"></div>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="remember"> Remember Me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
-<script src="https://colorlib.com/etc/lf/Login_v10/vendor/jquery/jquery-3.2.1.min.js"></script>
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Sign in
+                                </button>
+                                <a href="<?= site_url("signup") ?>" class="btn btn-link">
+                                    Don't have account?
+                                </a>
+                            </div>
+                    </div>
+                    <?= form_close() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
-<script src="https://colorlib.com/etc/lf/Login_v10/vendor/bootstrap/js/popper.js"></script>
-<script src="https://colorlib.com/etc/lf/Login_v10/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-<script src="https://colorlib.com/etc/lf/Login_v10/js/main.js"></script>
-
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.all.min.js"></script>
+  <script>
+    <?php if(@session()->get("info")[0] == 1){ ?>
+      Swal.fire({
+        title: 'Success!',
+        text: '<?= session()->get("info")[1] ?>',
+        icon: 'success',
+        confirmButtonText: 'Okay'
+      });
+    <?php } ?>
+    <?php if(@session()->get("info")[0] == 2){ ?>
+      Swal.fire({
+        title: 'Error!',
+        text: '<?= session()->get("info")[1] ?>',
+        icon: 'error',
+        confirmButtonText: 'Okay'
+      });
+    <?php } ?>
+  </script>
 </body>
 </html>

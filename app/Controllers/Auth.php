@@ -36,16 +36,16 @@ class Auth extends BaseController
 					"isLoggin" => true
 				];
 				session()->set($session);
-				session()->setFlashdata('info', "Selamat Datang.");
+				session()->setFlashdata('info', [1, "Selamat Datang."]);
                 return redirect()->to(site_url());
 				die();
 			}else{
-				session()->setFlashdata('info', "Kombinasi email dan password belum tepat.");
+				session()->setFlashdata('info', [2, "Kombinasi email dan password belum tepat."]);
 				return redirect()->to(site_url('login'));
 				die();
 			}
 		}else{
-			session()->setFlashdata('info', "Kombinasi email dan password belum tepat.");
+			session()->setFlashdata('info', [2, "Kombinasi email dan password belum tepat."]);
 			return redirect()->to(site_url('login'));
 			die();
 		}
@@ -57,7 +57,7 @@ class Auth extends BaseController
 			"title" => "Sign up Page",
 			"nav" => "login",
 		);
-		return view('auth/signup',$data);
+		return view('signup',$data);
     }
     
     function signupA(){
@@ -65,7 +65,7 @@ class Auth extends BaseController
 		$cekEmail = $this->users->getSql("SELECT `id` FROM `users` WHERE `email` = '$email'");
 		if(count($cekEmail)>=1){
 			session()->setFlashdata('info', [2,"Email sudah terdaftar."]);
-			return redirect()->to(base_url('/index.php/daftar'));
+			return redirect()->to(site_url('signup'));
 			die();
 		}
         $kirim = $this->sendVerif($email);
@@ -89,10 +89,10 @@ class Auth extends BaseController
 			];
 			session()->set($session);
 			session()->setFlashdata('info', [1,'Registration successfully']);
-			return redirect()->to(base_url('index.php/reseller/profile'));
+			return redirect()->to(site_url());
 		}else{
 			session()->setFlashdata('info', [2,'Registration failed']);
-			return redirect()->to(base_url('index.php/auth/signup'));
+			return redirect()->to(site_url('auth/signup'));
 		}
     }
 
