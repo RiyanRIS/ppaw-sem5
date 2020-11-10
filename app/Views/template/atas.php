@@ -12,6 +12,8 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          <?php if(isLogin()){ 
+            if(session()->has('admin')){ ?>
           <li class="nav-item">
             <a class="nav-link" href="<?= site_url("pemesanan") ?>">Pemesanan</a>
           </li>
@@ -24,12 +26,22 @@
           <li class="nav-item">
             <a class="nav-link" href="<?= site_url("admin") ?>">Admin</a>
           </li>
+          <?php }else{ ?>
+            <li class="nav-item">
+            <a class="nav-link" href="<?= site_url("pemesanan-user") ?>">Pemesanan</a>
+          </li>
+          <?php } ?>
+          <?php } ?>
+
+          <?php if(isLogin()){ ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= site_url("logout") ?>">Logout</a>
+          </li>
+          <?php }else{ ?>
           <li class="nav-item">
             <a class="nav-link" href="<?= site_url("login") ?>">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
+          <?php } ?>
         </ul>
       </div>
     </div>

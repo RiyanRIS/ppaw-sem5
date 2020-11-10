@@ -44,6 +44,7 @@ class BaseController extends Controller
 		date_default_timezone_set('Asia/Jakarta');
 		helper('form');
 		helper('cookie');
+		helper('ini_helper');
 	}
 
 }

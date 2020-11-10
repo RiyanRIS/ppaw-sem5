@@ -1,11 +1,10 @@
 <?php namespace App\Controllers;
  
-use CodeIgniter\Controller;
 use App\Models\Transaksi_model;
 use App\Models\Ikan_model;
 use App\Models\Pembeli_model;
  
-class Transaksi extends Controller
+class Transaksi extends BaseController
 {
     private $transaksiM;
     private $ikanM;
@@ -18,8 +17,12 @@ class Transaksi extends Controller
         $this->pembeliM = new Pembeli_model();
     }
 
-    public function index()
-    {
+    public function index(){
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         $data = array(
             "pemesanan" => $this->transaksiM->getSql("SELECT a.*, b.nama as namaikan, c.nama as namapemesan FROM transaksi a INNER JOIN ikan b ON a.ikan = b.id INNER JOIN pemesan c on a.pemesan = c.id WHERE a.deleteat IS NULL"),
             "ikan" => $this->ikanM->getIkan(),
@@ -29,6 +32,11 @@ class Transaksi extends Controller
     }
 
     public function aksi(){
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         if($this->request->getPost('status')=="tambah"){
             $data = array(
                 'pemesan'  => $this->request->getPost('namapembeli'),
@@ -50,7 +58,7 @@ class Transaksi extends Controller
             session()->setFlashdata('info', [1, 'Berhasil mengubah data']);
         }else{
             session()->setFlashdata('info', [2, 'Terjadi Kesalahan Data']);
-            return redirect()->to('/pemesanan');
+            return redirect()->to(site_url('/pemesanan'));
             die();
         }
 
@@ -58,11 +66,15 @@ class Transaksi extends Controller
             session()->setFlashdata('info', [2, 'Gagal menyimpan data']);
         }
         
-        return redirect()->to('/pemesanan');
+        return redirect()->to(site_url('/pemesanan'));
     }
 
-    public function hapus($id)
-    {
+    public function hapus($id){
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         $data = array(
             'deleteat'  => date("Y-m-d H:i:s"),
         );
@@ -72,10 +84,15 @@ class Transaksi extends Controller
         }else{
             session()->setFlashdata('info', [1, 'Berhasil menghapus data']);
         }
-        return redirect()->to('/pemesanan');
+        return redirect()->to(site_url('/pemesanan'));
     }
 
     public function status($a,$b){
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         if($a == "lunas"){
             $data = array(
                 'bayar'  => date("Y-m-d H:i:s"),
@@ -92,7 +109,7 @@ class Transaksi extends Controller
         }else{
             session()->setFlashdata('info', [1, 'Berhasil mengubah data']);
         }
-        return redirect()->to('/pemesanan');
+        return redirect()->to(site_url('/pemesanan'));
     }
 
 }

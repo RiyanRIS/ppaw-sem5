@@ -1,24 +1,32 @@
 <?php namespace App\Controllers;
  
-use CodeIgniter\Controller;
 use App\Models\Ikan_model;
  
-class Ikan extends Controller
+class Ikan extends BaseController
 {
     private $ikanM;
 
     public function __construct(){
-        helper('form');
         $this->ikanM = new Ikan_model();
     }
 
     public function index()
     {
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         $data['ikan'] = $this->ikanM->getIkan();
         echo view('ikan',$data);
     }
 
     public function aksi(){
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         if($this->request->getPost('status')=="tambah"){
             $data = array(
                 'nama'  => $this->request->getPost('namaikan'),
@@ -40,7 +48,7 @@ class Ikan extends Controller
             session()->setFlashdata('info', [1, 'Berhasil mengubah data']);
         }else{
             session()->setFlashdata('info', [2, 'Terjadi Kesalahan Data']);
-            return redirect()->to('/ikan');
+            return redirect()->to(site_url('/ikan'));
             die();
         }
 
@@ -48,21 +56,22 @@ class Ikan extends Controller
             session()->setFlashdata('info', [2, 'Gagal menyimpan data']);
         }
         
-        return redirect()->to('/ikan');
+        return redirect()->to(site_url('/ikan'));
     }
 
     public function hapus($id)
     {
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         $status = $this->ikanM->hapus($id);
         if(!$status){
             session()->setFlashdata('info', [2, 'Gagal menyimpan data']);
         }else{
             session()->setFlashdata('info', [1, 'Berhasil menghapus data']);
         }
-        return redirect()->to('/ikan');
-    }
-
-    function tes(){
-        print_r($this->ikanM->getIkan("2")->getResult('array'));
+        return redirect()->to(site_url('/ikan'));
     }
 }

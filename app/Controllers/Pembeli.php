@@ -1,9 +1,8 @@
 <?php namespace App\Controllers;
  
-use CodeIgniter\Controller;
 use App\Models\Pembeli_model;
  
-class Pembeli extends Controller
+class Pembeli extends BaseController
 {
     private $pembeliM;
 
@@ -12,13 +11,22 @@ class Pembeli extends Controller
         $this->pembeliM = new Pembeli_model();
     }
 
-    public function index()
-    {
+    public function index(){
+        if(!isLogin()){
+            session()->setFlashdata('info', [0,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         $data['pembeli'] = $this->pembeliM->getPembeli();
         echo view('pembeli',$data);
     }
 
     public function aksi(){
+        if(!isLogin()){
+            session()->setFlashdata('info', [0,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         if($this->request->getPost('status')=="tambah"){
             $pw = password_hash($this->request->getPost('password'),PASSWORD_DEFAULT);
             $data = array(
@@ -54,7 +62,7 @@ class Pembeli extends Controller
             session()->setFlashdata('info', [1, 'Berhasil mengubah data']);
         }else{
             session()->setFlashdata('info', [2, 'Terjadi Kesalahan Data']);
-            return redirect()->to('/pembeli');
+            return redirect()->to(site_url('/pembeli'));
             die();
         }
 
@@ -62,18 +70,22 @@ class Pembeli extends Controller
             session()->setFlashdata('info', [2, 'Gagal menyimpan data']);
         }
         
-        return redirect()->to('/pembeli');
+        return redirect()->to(site_url('/pembeli'));
     }
 
-    public function hapus($id)
-    {
+    public function hapus($id){
+        if(!isLogin()){
+            session()->setFlashdata('info', [0,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
         $status = $this->pembeliM->hapus($id);
         if(!$status){
             session()->setFlashdata('info', [2, 'Gagal menyimpan data']);
         }else{
             session()->setFlashdata('info', [1, 'Berhasil menghapus data']);
         }
-        return redirect()->to('/pembeli');
+        return redirect()->to(site_url('/pembeli'));
     }
 
 }
