@@ -59,14 +59,14 @@
                                         ?>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <a class="dropdown-item" href="<?= base_url("lunas-pemesanan/".$key['id']) ?>">Update Lunas</a>
-                                        <a class="dropdown-item" href="<?= base_url("selesai-pemesanan/".$key['id']) ?>">Update Sampai</a>
+                                        <a class="dropdown-item" href="<?= site_url("lunas-pemesanan/".$key['id']) ?>">Update Lunas</a>
+                                        <a class="dropdown-item" href="<?= site_url("selesai-pemesanan/".$key['id']) ?>">Update Sampai</a>
                                         </div>
                                     </div>
                                 </td>
                                 
                                 <td>
-                                <button data="<?= $key['id'] ?>" class="btn btn-warning 8867">ubah</button>||<a onclick="return confirm('Anda yakin akan menghapus data?')" href="<?= base_url("hapus-pemesanan/".$key['id']) ?>" class="btn btn-danger">hapus</a></td>
+                                <button data="<?= $key['id'] ?>" class="btn btn-warning 8867">ubah</button>||<a onclick="return confirm('Anda yakin akan menghapus data?')" href="<?= site_url("hapus-pemesanan/".$key['id']) ?>" class="btn btn-danger">hapus</a></td>
                             </tr>
                         <?php }?>
                         </tbody>

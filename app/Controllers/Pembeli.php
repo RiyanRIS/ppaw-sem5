@@ -12,8 +12,8 @@ class Pembeli extends BaseController
     }
 
     public function index(){
-        if(!isLogin()){
-            session()->setFlashdata('info', [0,"Silahkan Login Terlebih Dahulu"]);
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
             return redirect()->to(site_url('login'));
             die();
         }
@@ -22,8 +22,8 @@ class Pembeli extends BaseController
     }
 
     public function aksi(){
-        if(!isLogin()){
-            session()->setFlashdata('info', [0,"Silahkan Login Terlebih Dahulu"]);
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
             return redirect()->to(site_url('login'));
             die();
         }
@@ -74,8 +74,8 @@ class Pembeli extends BaseController
     }
 
     public function hapus($id){
-        if(!isLogin()){
-            session()->setFlashdata('info', [0,"Silahkan Login Terlebih Dahulu"]);
+        if(!isLogin() || !session()->has('admin')){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
             return redirect()->to(site_url('login'));
             die();
         }

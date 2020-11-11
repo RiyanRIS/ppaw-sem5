@@ -47,3 +47,10 @@ CRITICAL - 2020-11-10 15:19:22 --> Invalid file: signup.php
 #6 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
 #7 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Commands/Server/rewrite.php(34): require_once('/var/www/html/k...')
 #8 {main}
+CRITICAL - 2020-11-10 19:33:45 --> Call to a member function getName() on null
+#0 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(924): App\Controllers\Ikan->aksi()
+#1 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Commands/Server/rewrite.php(34): require_once('/var/www/html/k...')
+#5 {main}

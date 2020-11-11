@@ -31,8 +31,21 @@ class Transaksi extends BaseController
         echo view('pemesanan',$data);
     }
 
+    public function indexU(){
+        if(!isLogin()){
+            session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
+            return redirect()->to(site_url('login'));
+            die();
+        }
+        $idUser = session()->get('id');
+        $data = array(
+            "pemesanan" => $this->transaksiM->getSql("SELECT a.*, b.nama as namaikan, c.nama as namapemesan FROM transaksi a INNER JOIN ikan b ON a.ikan = b.id INNER JOIN pemesan c on a.pemesan = c.id WHERE a.pemesan = '$idUser' AND a.deleteat IS NULL"),
+        );
+        echo view('pemesanan-user',$data);
+    }
+
     public function aksi(){
-        if(!isLogin() || !session()->has('admin')){
+        if(!isLogin()){
             session()->setFlashdata('info', [2,"Silahkan Login Terlebih Dahulu"]);
             return redirect()->to(site_url('login'));
             die();
@@ -46,6 +59,10 @@ class Transaksi extends BaseController
             );
             $status = $this->transaksiM->simpan($data);
             session()->setFlashdata('info', [1, 'Berhasil menyimpan data']);
+            if($this->request->getPost('kode')==2762){
+                return redirect()->to(site_url('/pemesanan-user'));
+                die();
+            }
         }elseif($this->request->getPost('status')=="ubah"){
             $id = $this->request->getPost('id');
             $data = array(
@@ -96,6 +113,7 @@ class Transaksi extends BaseController
         if($a == "lunas"){
             $data = array(
                 'bayar'  => date("Y-m-d H:i:s"),
+                'sampai'  => NULL,
             );
             $status = $this->transaksiM->ubah($data,$b);
         }elseif($a == "selesai"){

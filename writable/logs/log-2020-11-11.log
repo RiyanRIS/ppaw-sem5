@@ -1,0 +1,21 @@
+CRITICAL - 2020-11-11 14:44:43 --> Undefined variable: pembeli
+#0 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Views/pemesanan.php(95): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/html/kumpulan-sistem/ppaw-sem5/system/View/View.php(246): include('/var/www/html/k...')
+#2 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Common.php(1119): CodeIgniter\View\View->render()
+#3 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Controllers/Transaksi.php(44): view()
+#4 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(924): App\Controllers\Transaksi->indexU()
+#5 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController()
+#6 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest()
+#7 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Commands/Server/rewrite.php(34): require_once('/var/www/html/k...')
+#9 {main}
+CRITICAL - 2020-11-11 14:48:26 --> Call to undefined function strtorime()
+#0 /var/www/html/kumpulan-sistem/ppaw-sem5/system/View/View.php(246): include()
+#1 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Common.php(1119): CodeIgniter\View\View->render()
+#2 /var/www/html/kumpulan-sistem/ppaw-sem5/app/Controllers/Transaksi.php(44): view()
+#3 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(924): App\Controllers\Transaksi->indexU()
+#4 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(410): CodeIgniter\CodeIgniter->runController()
+#5 /var/www/html/kumpulan-sistem/ppaw-sem5/system/CodeIgniter.php(318): CodeIgniter\CodeIgniter->handleRequest()
+#6 /var/www/html/kumpulan-sistem/ppaw-sem5/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /var/www/html/kumpulan-sistem/ppaw-sem5/system/Commands/Server/rewrite.php(34): require_once('/var/www/html/k...')
+#8 {main}

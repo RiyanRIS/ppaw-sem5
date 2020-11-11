@@ -8,6 +8,7 @@
   <title>PANEL ATUR IKAN</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" />
 </head>
 <body>
 
@@ -45,7 +46,7 @@
                                 <td><?= $key['nama'];?></td>
                                 <td><?= $key['deskripsi'];?></td>
                                 <td><?= $key['harga'];?></td>
-                                <td><?= $key['gambar'];?></td>
+                                <td><img width="120px" src="<?= base_url("assets/img/".$key['gambar']);?>" alt=""></td>
                                 <td><button data="<?= $key['id'] ?>" class="btn btn-warning 8867">ubah</button>||<a onclick="return confirm('Anda yakin akan menghapus data?')" href="<?= base_url("hapus-ikan/".$key['id']) ?>" class="btn btn-danger">hapus</a></td>
                             </tr>
                         <?php }?>
@@ -61,7 +62,7 @@
                 TAMBAH DATA IKAN
             </div>
             <div class="card-body">
-                <?= form_open("aksi-ikan") ?>
+                <?= form_open_multipart("aksi-ikan") ?>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="reset" class="btn btn-secondary" id="9162">Reset</button>
@@ -80,7 +81,11 @@
                     <label for="harga">Harga</label>
                     <input type="text" class="form-control" required id="harga" name="harga" placeholder="Masukkan Harga">
                 </div>
-                
+                <div class="form-group">
+                    <label for="gambar">Gambar</label>
+                    <input class="dropify" id="image" type="file" name="image" accept=".jpg, .png, image/jpeg, image/png" data-max-file-size="3M">
+                </div>
+
                 <?= form_close() ?>
             </div>
         </div>
@@ -96,7 +101,11 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous"></script>
   <script>
+    var drEvent = $('.dropify').dropify();
+    drEvent = drEvent.data('dropify');
+
     <?php if(@session()->get("info")[0] == 1){ ?>
       Swal.fire({
         title: 'Success!',
@@ -122,12 +131,25 @@
                 $("#9187").html("TAMBAH DATA IKAN");
                 $("#2761").val("tambah");
                 $("#namaikan").focus();
+                $("#namaikan").val("");
+                $("#1782").val("");
+                $("#deskripsi").val("");
+                $("#harga").val("");
+                drEvent.resetPreview();
+                drEvent.clearElement();
+                drEvent.settings.defaultFile = "";
+                drEvent.destroy();
+                drEvent.init();
+                $('.dropify').dropify({
+                    defaultFile: "",
+                });
+                $("#image").attr("data-default-file", "");
             });
             $('#data').on('click','.8867',function(){ // KLIK UBAH
                 var id=$(this).attr('data');
                 $.ajax({
                     type : "POST",
-                    url: "<?= base_url("getJson/ikan") ?>", 
+                    url: "<?= site_url("getJson/ikan") ?>", 
                     data : {id:id},
                     dataType : "JSON",
                     success: function(result){
@@ -138,6 +160,14 @@
                         $("#1782").val(result.id);
                         $("#deskripsi").val(result.deskripsi);
                         $("#harga").val(result.harga);
+                        drEvent.resetPreview();
+                        drEvent.clearElement();
+                        drEvent.settings.defaultFile = "<?= base_url("assets/img/") ?>/"+result.gambar;
+                        drEvent.destroy();
+                        drEvent.init();
+                        $('.dropify').dropify({
+                            defaultFile: "<?= base_url("assets/img/") ?>/"+result.gambar,
+                        });
                     }
                 });
             });

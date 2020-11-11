@@ -9,7 +9,11 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('index');
+		$ikan = new Ikan_model();
+		$data = [
+			'ikan' =>  $ikan->getIkan()
+		];
+		return view('index',$data);
 	}
 
 	public function getJson($a){
