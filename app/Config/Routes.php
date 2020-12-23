@@ -49,6 +49,7 @@ $routes->get('/pemesanan', 'Transaksi::index');
 $routes->get('/pemesanan-user', 'Transaksi::indexU');
 $routes->post('/aksi-pemesanan', 'Transaksi::aksi');
 $routes->get('/hapus-pemesanan/(:any)', 'Transaksi::hapus/$1');
+$routes->get('/lunas-batal/(:any)', 'Transaksi::status/batal/$1');
 $routes->get('/lunas-pemesanan/(:any)', 'Transaksi::status/lunas/$1');
 $routes->get('/selesai-pemesanan/(:any)', 'Transaksi::status/selesai/$1');
 

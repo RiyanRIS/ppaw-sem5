@@ -59,6 +59,7 @@
                                         ?>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <a class="dropdown-item" href="<?= site_url("lunas-batal/".$key['id']) ?>">Update Belum Lunas</a>
                                         <a class="dropdown-item" href="<?= site_url("lunas-pemesanan/".$key['id']) ?>">Update Lunas</a>
                                         <a class="dropdown-item" href="<?= site_url("selesai-pemesanan/".$key['id']) ?>">Update Sampai</a>
                                         </div>

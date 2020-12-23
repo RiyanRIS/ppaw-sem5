@@ -110,7 +110,13 @@ class Transaksi extends BaseController
             return redirect()->to(site_url('login'));
             die();
         }
-        if($a == "lunas"){
+        if($a == "batal"){
+            $data = array(
+                'bayar'  => NULL,
+                'sampai'  => NULL,
+            );
+            $status = $this->transaksiM->ubah($data,$b);
+        }elseif($a == "lunas"){
             $data = array(
                 'bayar'  => date("Y-m-d H:i:s"),
                 'sampai'  => NULL,
